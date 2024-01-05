@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.mybatis.demo.dao.QuestionMapper">
+    <resultMap id="result" type="com.springboot.mybatis.demo.domain.Question">
+        <result property="no" column="no"/>
+        <result property="appname" column="appname"/>
+        <result property="cluster" column="cluster"/>
+        <result property="service_en" column="service_en"/>
+        <result property="service_cn" column="service_cn"/>
+        <result property="function" column="function"/>
+        <result property="questiontype" column="questiontype"/>
+        <result property="manager" column="manager"/>
+        <result property="date" column="date"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.springboot.mybatis.demo.domain.Question"
+            keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO fz_questions
+        (
+        appname, cluster, service_en, service_cn, function, questiontype, manager, date
+        )
+        VALUES (
+        #{appname, jdbcType=VARCHAR},
+        #{cluster, jdbcType=VARCHAR},
+        #{service_en, jdbcType=VARCHAR},
+        #{service_cn, jdbcType=VARCHAR},
+        #{function, jdbcType=VARCHAR},
+        #{questiontype, jdbcType=BIGINT},
+        #{manager, jdbcType=VARCHAR},
+        #{date, jdbcType=VARCHAR}
+        )
+    </insert>
+
+</mapper>
